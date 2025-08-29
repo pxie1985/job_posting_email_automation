@@ -60,45 +60,18 @@ pip install -r requirements.txt
 ## Usage
 
 ### Basic Usage
+Please see the exampl in the example_usage.py file.
 
-```bash
-python gmail_reader.py
-```
 
 The script will:
 
 1. Authenticate with Gmail API (opens browser for first-time setup)
 2. Find the "job_posting" label
 3. Retrieve up to 50 emails from that label
-4. Display email summaries
-5. Ask if you want to save emails to a file
-6. Ask if you want to see full email bodies
+4. Add foot notes to each email and then save them to draft ready for forwarding
+5. Move the processed emails to "job_posting_processed" label
 
-### Command Line Options
 
-You can also use the script programmatically:
-
-```python
-from gmail_reader import GmailJobPostingReader
-
-# Initialize reader
-reader = GmailJobPostingReader()
-
-# Authenticate
-if reader.authenticate():
-    # Get label ID
-    label_id = reader.get_label_id('job_posting')
-
-    if label_id:
-        # Get emails
-        emails = reader.get_emails_from_label(label_id, max_results=100)
-
-        # Print emails
-        reader.print_emails(emails, show_body=True)
-
-        # Save to file
-        reader.save_emails_to_file(emails, 'my_job_emails.txt')
-```
 
 ## File Structure
 
@@ -108,7 +81,6 @@ job_posting_email_automation/
 ├── requirements.txt         # Python dependencies
 ├── credentials.json         # Gmail API credentials (you need to add this)
 ├── token.json              # Authentication token (generated automatically)
-├── job_posting_emails.txt  # Output file (generated when saving)
 └── README.md               # This file
 ```
 
